@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KMS Corp Comms — FY26 Year in Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#006AFE; --deep:#245DB3; --dark:#0A1628; --magenta:#FE006A;
+  --purple:#6A26F1; --teal:#02CCB3; --orange:#E86826;
+  --g1:#F7F9FC; --g2:#EEF2F7; --g4:#9BA8BA; --g6:#5A6680; --g8:#1E2A3A;
+  --font:'Poppins',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--g1);color:var(--g8);line-height:1.6}
+
+/* GRID BG */
+.grid-bg{position:relative;overflow:hidden}
+.grid-bg::before{content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:44px 44px;pointer-events:none;z-index:0}
+.grid-bg>*{position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,22,40,.96);
+  backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,106,254,.2);
+  padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-size:11.5px;font-weight:700;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.nav-logo span{color:#fff}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:11px;font-weight:500;color:rgba(255,255,255,.45);text-decoration:none;
+  letter-spacing:.8px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:#fff}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:72px 60px}
+.full-dark{background:linear-gradient(145deg,#0A1628,#0D2040)}
+.full-white{background:#fff}
+.full-gray{background:var(--g1)}
+
+/* SECTION LABELS */
+.sec-label{font-size:10.5px;font-weight:700;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin-bottom:12px}
+.sec-label-teal{font-size:10.5px;font-weight:700;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
+.sec-title{font-size:32px;font-weight:800;line-height:1.15;margin-bottom:10px;color:var(--g8)}
+.sec-title-white{font-size:32px;font-weight:800;line-height:1.15;margin-bottom:10px;color:#fff}
+.sec-sub{font-size:14px;color:var(--g6);max-width:680px;margin-bottom:42px;line-height:1.75}
+.sec-sub-white{font-size:14px;color:rgba(255,255,255,.55);max-width:680px;margin-bottom:42px;line-height:1.75}
+
+/* IMPACT METRICS */
+.impact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.impact-block{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:30px}
+.impact-block h3{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.metric-item{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 18px}
+.metric-item:hover{background:rgba(255,255,255,.07);border-color:rgba(0,106,254,.3)}
+.metric-val{font-size:26px;font-weight:800;color:#fff!important;line-height:1;margin-bottom:5px}
+.metric-lbl{font-size:10.5px;color:rgba(255,255,255,.5);line-height:1.45}
+.metric-lbl span{display:block;margin-top:2px;color:var(--teal);font-weight:500}
+.metric-item.wide{grid-column:span 2}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.t-card{background:#fff;border:1.5px solid var(--g2);border-radius:16px;padding:24px 20px;
+  transition:box-shadow .25s,border-color .25s,transform .2s}
+.t-card:hover{box-shadow:0 10px 36px rgba(0,106,254,.1);border-color:rgba(0,106,254,.3);transform:translateY(-2px)}
+.t-avatar{width:64px;height:64px;border-radius:14px;margin-bottom:14px;object-fit:cover;display:block}
+.t-name{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--g8)}
+.t-role{font-size:11px;font-weight:500;color:var(--g6);margin-bottom:14px;line-height:1.4}
+.testimonial{background:var(--g1);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;
+  padding:12px 14px;font-size:11px;color:var(--g6);line-height:1.6;font-style:italic}
+
+/* INSTAGRAM GRID */
+.insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.insta-card{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;display:block;
+  text-decoration:none;color:inherit}
+.insta-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.insta-card:hover img{transform:scale(1.06)}
+.insta-card-img-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:42px;transition:transform .4s ease}
+.insta-card:hover .insta-card-img-fallback{transform:scale(1.04)}
+.insta-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.92) 0%,rgba(10,22,40,.5) 45%,transparent 70%);
+  opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 16px}
+.insta-card:hover .insta-overlay{opacity:1}
+.insta-tag{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:5px}
+.insta-title{font-size:13px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:5px}
+.insta-desc{font-size:10.5px;color:rgba(255,255,255,.7);line-height:1.5}
+.insta-date{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;
+  background:rgba(10,22,40,.75);color:rgba(255,255,255,.8);padding:3px 8px;
+  border-radius:20px;letter-spacing:.5px;backdrop-filter:blur(6px)}
+.insta-link-icon{position:absolute;top:12px;right:12px;width:28px;height:28px;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.insta-card:hover .insta-link-icon{opacity:1}
+.insta-link-icon svg{width:14px;height:14px;fill:#fff}
+
+/* MEDIA */
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.media-card{background:#fff;border:1.5px solid var(--g2);border-radius:16px;
+  padding:22px 24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:9px;
+  transition:box-shadow .25s,border-color .25s,transform .2s}
+.media-card:hover{box-shadow:0 8px 32px rgba(0,106,254,.1);border-color:rgba(0,106,254,.3);transform:translateY(-2px)}
+.media-source{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue)}
+.media-headline{font-size:13px;font-weight:700;color:var(--g8);line-height:1.5;flex:1}
+.media-date{font-size:10px;color:var(--g4)}
+.media-tag{font-size:9px;font-weight:700;padding:3px 10px;border-radius:10px;
+  text-transform:uppercase;letter-spacing:.5px;display:inline-block;align-self:flex-start}
+.media-arrow{font-size:18px;color:var(--blue);align-self:flex-end;margin-top:auto;transition:transform .2s}
+.media-card:hover .media-arrow{transform:translateX(4px)}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.38);text-align:center;padding:36px;font-size:11px;line-height:1.8}
+footer .logo{font-size:13px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.7);text-transform:uppercase;margin-bottom:6px}
+footer .logo span{color:rgba(255,255,255,.7)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .insta-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:0 18px;height:auto;flex-direction:column;align-items:flex-start;padding:12px 18px;gap:8px}
+  .nav-links{gap:14px;flex-wrap:wrap}
+  .wrap{padding:48px 22px}
+  .impact-wrap{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .media-grid{grid-template-columns:1fr}
+  .sec-title,.sec-title-white{font-size:24px}
+  .insta-overlay{opacity:1;background:linear-gradient(to top,rgba(10,22,40,.9) 0%,transparent 65%)}
+  .insta-link-icon{opacity:1}
+}
+@media(max-width:480px){
+  .wrap{padding:36px 16px}
+  .team-grid{grid-template-columns:1fr}
+  .insta-grid{grid-template-columns:repeat(2,1fr)}
+  nav{position:relative}
+  .nav-links{display:none}
+  .metric-grid{grid-template-columns:1fr}
+  .metric-item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KMS <span>Technology</span> — Corp Comms FY26</div>
+  <div class="nav-links">
+    <a href="#impact">Impact</a>
+    <a href="#team">Team</a>
+    <a href="#projects">Highlights</a>
+    <a href="#media">In the Media</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="full-dark grid-bg">
+<div class="wrap" style="padding-top:90px;padding-bottom:56px">
+  <div style="font-size:10.5px;font-weight:700;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-bottom:16px">
+    Year in Review · FY26 · Jul 2025 – Jun 2026
+  </div>
+  <h1 style="font-size:52px;font-weight:800;line-height:1.08;max-width:860px;margin-bottom:20px;color:#fff;letter-spacing:-.5px">
+    Corporate Communications<br>
+    <span style="background:linear-gradient(90deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">FY26 Impact Showcase</span>
+  </h1>
+  <div style="display:flex;gap:10px;margin-top:28px;flex-wrap:wrap">
+    <div style="background:rgba(0,106,254,.15);border:1px solid rgba(0,106,254,.3);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--blue)">
+      Brand Communications
+    </div>
+    <div style="background:rgba(254,0,106,.12);border:1px solid rgba(254,0,106,.25);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--magenta)">
+      CSR - ESG
+    </div>
+    <div style="background:rgba(2,204,179,.12);border:1px solid rgba(2,204,179,.25);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--teal)">
+      Social Media Coverage
+    </div>
+    <div style="background:rgba(106,38,241,.12);border:1px solid rgba(106,38,241,.25);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--purple)">
+      Corporate Partnership
+    </div>
+    <div style="background:rgba(0,106,254,.15);border:1px solid rgba(0,106,254,.3);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--blue)">
+      Thought Leadership &amp; Employee Advocacy
+    </div>
+    <div style="background:rgba(2,204,179,.12);border:1px solid rgba(2,204,179,.25);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--teal)">
+      Employer Branding
+    </div>
+    <div style="background:rgba(254,0,106,.12);border:1px solid rgba(254,0,106,.25);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--magenta)">
+      Organizational Alignment
+    </div>
+    <div style="background:rgba(106,38,241,.12);border:1px solid rgba(106,38,241,.25);border-radius:24px;padding:7px 18px;font-size:11px;font-weight:600;color:var(--purple)">
+      Events
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- IMPACT AT A GLANCE -->
+<div id="impact" class="full-dark" style="border-top:1px solid rgba(255,255,255,.05)">
+<div class="wrap" style="padding-top:60px;padding-bottom:72px">
+  <div class="sec-label-teal">FY26 Impact at a Glance</div>
+  <h2 class="sec-title-white">What We Delivered</h2>
+  <p class="sec-sub-white">Key outcomes across external communications and internal comms & talent branding for FY26.</p>
+  <div class="impact-wrap">
+
+    <!-- External Communications -->
+    <div class="impact-block">
+      <h3>External Communications</h3>
+      <div class="metric-grid">
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--blue)">73,427</div>
+          <div class="metric-lbl">LinkedIn Followers<span style="color:var(--teal)">+39.3% YoY</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--blue)">53,658</div>
+          <div class="metric-lbl">Facebook Fans<span>+4% YoY</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--magenta)">545</div>
+          <div class="metric-lbl">Media Mentions<span>86% in the United States</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--teal)">4.8/5</div>
+          <div class="metric-lbl">Business Brand Score<span>Clutch Reviews</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--purple)">4.2/5</div>
+          <div class="metric-lbl">Employer Brand Score<span>Glassdoor</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--orange)">15</div>
+          <div class="metric-lbl">Thought Leadership<span>Human-story content pieces</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--blue)">3</div>
+          <div class="metric-lbl">TechCafe Events<span>250 participants</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--teal)">305</div>
+          <div class="metric-lbl">Employee Advocacy<span>Online & offline actions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Internal Comms & Talent Branding -->
+    <div class="impact-block">
+      <h3>Internal Comms &amp; Talent Branding</h3>
+      <div class="metric-grid">
+        <div class="metric-item wide">
+          <div class="metric-val" style="color:var(--teal)">87%</div>
+          <div class="metric-lbl">Monthly RoundUp Newsletter Open Rate<span>vs. 20–25% industry benchmark</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--blue)">7,019</div>
+          <div class="metric-lbl">New Leads Recorded<span>Candidate nurturing pipeline</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--purple)">35%</div>
+          <div class="metric-lbl">Talent Source Contribution<span>Job marketing ads</span></div>
+        </div>
+        <div class="metric-item wide">
+          <div class="metric-val" style="color:var(--teal)">89.4%</div>
+          <div class="metric-lbl">Employees Confirmed Timely Company Updates<span>EES Survey result</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--orange)">75%</div>
+          <div class="metric-lbl">Employee Events<span>Participation rate</span></div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:var(--teal)">4.7/5</div>
+          <div class="metric-lbl">Events Satisfaction<span>Post-event survey score</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- TEAM -->
+<div id="team" class="full-white">
+<div class="wrap">
+  <div class="sec-label">The People Behind the Work</div>
+  <h2 class="sec-title">Meet the Corp Comms Team</h2>
+  <p class="sec-sub">7 specialists running what most companies staff across 15+ roles — from PR and brand to events, design, and employer branding across four countries.</p>
+  <div class="team-grid">
+
+    <div class="t-card">
+      <img class="t-avatar" src="Duy%20Tran.jpg" alt="Duy Tran"
+        onerror="this.src='https://ui-avatars.com/api/?name=Duy+Tran&background=006AFE&color=fff&size=128&bold=true'">
+      <div class="t-name">Duy Tran (Dom)</div>
+      <div class="t-role">Head of Corporate Communications</div>
+      <div class="testimonial">He must have learnt many new lessons to unlearn what he did well many years in the past.</div>
+    </div>
+
+    <div class="t-card">
+      <img class="t-avatar" src="Trang%20Le.webp" alt="Trang Le"
+        onerror="this.src='https://ui-avatars.com/api/?name=Trang+Le&background=FE006A&color=fff&size=128&bold=true'">
+      <div class="t-name">Trang Le</div>
+      <div class="t-role">Manager, PR / CSR / External Comms</div>
+      <div class="testimonial">Consistently demonstrated creativity, collaboration, responsiveness, and strong execution across multiple concurrent initiatives.</div>
+    </div>
+
+    <div class="t-card">
+      <img class="t-avatar" src="Dao%20Pham.webp" alt="Dao Pham"
+        onerror="this.src='https://ui-avatars.com/api/?name=Dao+Pham&background=6A26F1&color=fff&size=128&bold=true'">
+      <div class="t-name">Dao Pham</div>
+      <div class="t-role">Manager, Internal Comms &amp; Employer Branding</div>
+      <div class="testimonial">Consistently shows up with the same level of commitment whether leading or supporting. Trustworthy in the truest sense: what she says she'll do, she does.</div>
+    </div>
+
+    <div class="t-card">
+      <img class="t-avatar" src="Quyen%20Chung.webp" alt="Quyen Chung"
+        onerror="this.src='https://ui-avatars.com/api/?name=Quyen+Chung&background=E86826&color=fff&size=128&bold=true'">
+      <div class="t-name">Quyen Chung</div>
+      <div class="t-role">Events Team Lead, Vietnam</div>
+      <div class="testimonial">Has a deep understanding of the team's unique culture, and designs tailored plans that perfectly match their specific demands and goals.</div>
+    </div>
+
+    <div class="t-card">
+      <img class="t-avatar" src="Thao%20Pham.webp" alt="Thao Pham"
+        onerror="this.src='https://ui-avatars.com/api/?name=Thao+Pham&background=02CCB3&color=fff&size=128&bold=true'">
+      <div class="t-name">Thao Pham</div>
+      <div class="t-role">Senior Event Executive, Vietnam</div>
+      <div class="testimonial">Maintained a strong satisfaction rate for events despite tighter resources compared to the prior year.</div>
+    </div>
+
+    <div class="t-card">
+      <img class="t-avatar" src="Linh%20Tran.webp" alt="Linh Tran"
+        onerror="this.src='https://ui-avatars.com/api/?name=Linh+Tran&background=245DB3&color=fff&size=128&bold=true'">
+      <div class="t-name">Linh Tran</div>
+      <div class="t-role">Senior Events &amp; Comms, Da Nang</div>
+      <div class="testimonial">Creates genuine confidence when taking ownership of a task — she not only completes what is requested but often goes beyond expectations with creative ideas and thoughtful execution.</div>
+    </div>
+
+    <div class="t-card" style="grid-column:span 2">
+      <div style="display:flex;gap:18px;align-items:flex-start">
+        <img class="t-avatar" style="width:68px;height:68px;flex-shrink:0" src="Vinh%20Tran.webp" alt="Vinh Tran"
+          onerror="this.src='https://ui-avatars.com/api/?name=Vinh+Tran&background=6A26F1&color=fff&size=128&bold=true'">
+        <div>
+          <div class="t-name">Vinh Tran</div>
+          <div class="t-role">Designer Lead</div>
+          <div class="testimonial">Despite a heavy workload, Vinh has been very supportive in helping with multiple design requests and always delivers on time. Straightforward, easy to work with, and open to feedback.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- KEY HIGHLIGHTED PROJECTS -->
+<div id="projects" class="full-gray">
+<div class="wrap" style="padding-bottom:32px">
+  <div class="sec-label">FY26 Highlights</div>
+  <h2 class="sec-title">Key Projects &amp; Moments</h2>
+  <p class="sec-sub">A year of milestones across brand, culture, and community — Jul 2025 through Jun 2026.</p>
+</div>
+<div class="insta-grid" style="margin:0 10px">
+
+  <!-- 1: ESG Report 2025 -->
+  <a class="insta-card" href="https://www.facebook.com/kmstechnologyvietnam/posts/719161247404268" target="_blank" rel="noopener">
+    <img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/518366967_718276960826030_7742388820873469149_n.jpg?stp=dst-jpg_tt6&cstp=mx1800x1206&ctp=p960x960&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Jw5wl_ayBsIQ7kNvwGH7Uck&_nc_oc=AdrGJzWCyeofr2BqXF71AiS-BpGWS4JEi2TxLCr1RhWR-QbF_-a9HwAb6gdi8DjdXmM&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=uBMPjnlMvxNLhd8dosIkDA&_nc_ss=7b2a8&oh=00_AQCw747EemFfaTCtxkRKyvs1X0mQ_6AL4kxTjzJ04RGbxg&oe=6A4BDABE" alt="ESG Report 2025"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A3020,#02CCB3 60%,#006AFE)">🌿</div>
+    <div class="insta-date">Jul 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">CSR · Sustainability</div>
+      <div class="insta-title">ESG Report 2025</div>
+      <div class="insta-desc">KMS publishes its annual ESG commitments — environmental impact, social programs, and governance milestones</div>
+    </div>
+  </a>
+
+  <!-- 2: Top 50 Corporate Responsibility -->
+  <a class="insta-card" href="https://www.facebook.com/kmstechnologyvietnam/posts/718186434168416" target="_blank" rel="noopener">
+    <img src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/518413360_718185524168507_4859111142783482617_n.jpg?stp=dst-jpg_tt6&cstp=mx2037x1338&ctp=s2037x1338&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=d9yvbLIw2-EQ7kNvwEeBzO1&_nc_oc=Adp2ChYVC2MEfTIAP-lIv6qgh9fknlCehrRzNtnHpsZnq4P4HIajlFQHv0NTTdMFsJw&_nc_zt=23&_nc_ht=scontent.fsgn5-15.fna&_nc_gid=ITXyskjBjZmYO9qErp9uvg&_nc_ss=7b2a8&oh=00_AQCLEe11ORolzQUqshSAHbpSkAJcq8Pi8CJTd-RS3K3t1w&oe=6A4BCEF2" alt="Top 50 Corporate Responsibility"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#1A0820,#E86826 55%,#FE006A)">🏆</div>
+    <div class="insta-date">Jul 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Awards · CSR</div>
+      <div class="insta-title">Top 50 Corporate Responsibility</div>
+      <div class="insta-desc">KMS recognized among Vietnam's Top 50 companies for corporate responsibility and sustainable business practices</div>
+    </div>
+  </a>
+
+  <!-- 3: KMS Brand Refresh -->
+  <a class="insta-card" href="https://kms-technology.com/news/kms-technology-unveils-refreshed-brand-identity-to-reflect-its-ai-first-evolution/" target="_blank" rel="noopener">
+    <img src="new%20brand.png" alt="KMS Brand Refresh"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#6A26F1 55%,#006AFE)">✨</div>
+    <div class="insta-date">Nov 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Brand Identity</div>
+      <div class="insta-title">KMS Brand Refresh</div>
+      <div class="insta-desc">New logo, color palette & "From Idea to Impact" tagline — KMS's AI-first evolution goes public</div>
+    </div>
+  </a>
+
+  <!-- 4: Fortune 100 Best Companies -->
+  <a class="insta-card" href="https://kms-technology.com/news/kms-technology-named-fortune-100-best-companies-to-work-for-in-southeast-asia-2025/" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQFR-iTv1Rbe7A/feedshare-shrink_800/feedshare-shrink_800/0/1705345458636?e=2147483647&v=beta&t=WpkgJEpc5Kay7qf7AC_qBiWl3QmyWw1Rlg7svPHocFI" alt="Fortune 100"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#E86826 50%,#FE006A)">🌟</div>
+    <div class="insta-date">Dec 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Awards · Employer Brand</div>
+      <div class="insta-title">Fortune 100 Best Companies to Work For</div>
+      <div class="insta-desc">KMS earns a spot on Fortune's inaugural Southeast Asia list — honoring a people-first culture built over 15 years</div>
+    </div>
+  </a>
+
+  <!-- 5: KMS Acquires Addepto -->
+  <a class="insta-card" href="https://kms-technology.com/news/kms-technology-acquires-addepto-a-rapidly-growing-provider-of-ai-and-data-services/" target="_blank" rel="noopener">
+    <img src="https://kms-technology.com/wp-content/uploads/KMS_-_Addepto.jpg" alt="KMS x Addepto"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#006AFE 55%,#02CCB3)">🤝</div>
+    <div class="insta-date">Dec 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Global Expansion</div>
+      <div class="insta-title">KMS Acquires Addepto</div>
+      <div class="insta-desc">KMS expands globally with the acquisition of Poland's fastest-growing AI & Data consultancy</div>
+    </div>
+  </a>
+
+  <!-- 6: YEP 2025 — Tết in Style -->
+  <a class="insta-card" href="https://www.facebook.com/reel/4367650080143414" target="_blank" rel="noopener">
+    <img src="https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/621839837_868560982464293_130131398336233420_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ivHx2Co92EYQ7kNvwGz5d-f&_nc_oc=AdrIWU3hAZINiwrrH5-Z7udA3A9RU_q0JSM1ITYiePIe2FU6rzblbPhxXxiiOyMPnpc&_nc_zt=23&_nc_ht=scontent.fsgn19-1.fna&_nc_gid=uozwkByJnqHOj2jmKlpquQ&_nc_ss=7b2a8&oh=00_AQA1YpB-CdVMQynlFcvJN26L4lGFa-hZzVhu1wjs4njqpg&oe=6A4D7DC4" alt="YEP 2025 Tết in Style"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#1A0820,#FE006A 45%,#E86826)">🎋</div>
+    <div class="insta-date">Jan 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Culture · YEP 2025</div>
+      <div class="insta-title">YEP 2025 — Tết in Style</div>
+      <div class="insta-desc">A vibrant Tết-themed Year-End Party uniting KMS teams from Vietnam, US, and Mexico in celebration</div>
+    </div>
+  </a>
+
+  <!-- 7: Sports Fest 2026 -->
+  <a class="insta-card" href="https://www.facebook.com/kmstechnologyvietnam/posts/951668637486860" target="_blank" rel="noopener">
+    <img src="https://scontent.fsgn5-7.fna.fbcdn.net/v/t39.30808-6/689009628_951657527487971_8171932448617906679_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s1080x2048&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ugIoEV6XGGAQ7kNvwGBkmyK&_nc_oc=AdrjTlF8QIVzrAUIHsgzDfJcJ2F6UbbRa1auDf2bp3J8ZZHknG8oz43RYOebDJNH4pY&_nc_zt=23&_nc_ht=scontent.fsgn5-7.fna&_nc_gid=b3rVr2qqCn5ibUS-dAdajg&_nc_ss=7b2a8&oh=00_AQD1kAaoYr2Pv1C0VKKUI9nX89ae00OgbszfRxE0PJePDw&oe=6A4C0176" alt="Sports Fest 2026"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#002818,#02CCB3 55%,#006AFE)">⚽</div>
+    <div class="insta-date">May 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Employee Events</div>
+      <div class="insta-title">Sports Fest 2026</div>
+      <div class="insta-desc">KMS's annual sports celebration — fostering teamwork, wellness, and team spirit across all locations</div>
+    </div>
+  </a>
+
+  <!-- 9: Jason Wojahn New CEO -->
+  <a class="insta-card" href="https://kms-technology.com/news/kms-technology-appoints-jason-wojahn-as-ceo/" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQHx4LhHbMusUA/feedshare-shrink_1280/B56Z4bp7FzGUAM-/0/1778580435664?e=1784764800&v=beta&t=zHyQZC627C6r_oNJQMtNHL8QXx6vDWi0fsjPmU53qyk" alt="Jason Wojahn CEO"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#6A26F1 55%,#FE006A)">👤</div>
+    <div class="insta-date">May 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Leadership · Executive Comms</div>
+      <div class="insta-title">Jason Wojahn Appointed CEO</div>
+      <div class="insta-desc">KMS announces new CEO to lead the company's bold shift to AI-native enterprise execution</div>
+    </div>
+  </a>
+
+  <!-- 10: Campus University Engagement -->
+  <a class="insta-card" href="https://www.facebook.com/photo/?fbid=976660908320966" target="_blank" rel="noopener">
+    <img src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/721082535_976660908320966_9173916498136757787_n.jpg?stp=dst-jpg_tt6&cstp=mx1152x2048&ctp=p526x296&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=bdeb5f&_nc_ohc=jpmz9Bii7csQ7kNvwF7iatV&_nc_oc=Adpx6XtyjmDbblZEeQ7pgqX34vrVjkTTDFEZGIS94Rld0UILia5wSqK2MIAseQdgm9k&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=eFsavwLAnwkROUQ_DSUrjw&_nc_ss=7b2a8&oh=00_AQAomcFeje6huBzzeraxQc35Iw-ZWRpQ56Sb5O4SAxnang&oe=6A4BFDB6" alt="University Campus Engagement"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#6A26F1 45%,#02CCB3)">🎓</div>
+    <div class="insta-date">Jun 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Talent Branding · Education</div>
+      <div class="insta-title">University Campus Engagement</div>
+      <div class="insta-desc">Welcoming students from UK universities and HCMUS to KMS — inspiring the next generation of IT talent</div>
+    </div>
+  </a>
+
+  <!-- 11: MoveIT 2026 -->
+  <a class="insta-card" href="https://www.facebook.com/photo/?fbid=985751354078588" target="_blank" rel="noopener">
+    <img src="https://scontent.fsgn5-21.fna.fbcdn.net/v/t39.99422-6/730917697_1000600085909950_5955389327907389726_n.png?stp=dst-jpg_tt6&cstp=mx1638x2048&ctp=s1638x2048&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=9ZV8a3TkLLwQ7kNvwEs6gcl&_nc_oc=AdqEzSJKG8dSsDOiZbCsguo2fq1bK6jGOUeL2Qii_GV9OdFm639z8BhbMwwQT_1K0u8&_nc_zt=14&_nc_ht=scontent.fsgn5-21.fna&_nc_gid=3ZAG1DNGwpFAsKre2Es1BA&_nc_ss=7b2a8&oh=00_AQAxnmReR0-t89L7J6HOIW66EFmnRe_6zDSriqNb4c71UQ&oe=6A4BFF9F" alt="MoveIT 2026"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#002818,#02CCB3 40%,#E86826)">🏃</div>
+    <div class="insta-date">Jun 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">CSR · Community</div>
+      <div class="insta-title">MoveIT 2026 — Every Move Counts</div>
+      <div class="insta-desc">639 participants · 35,934 km logged · 60M VND raised for IT students' greener future across 4 countries</div>
+    </div>
+  </a>
+
+  <!-- 13: AI Evangelist Program -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_ai-evangelist-deep-ai-knowledge-to-not-only-activity-7353046125991354368-Hqt7" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5612AQFHH8oVx56yAQ/article-cover_image-shrink_720_1280/B56ZgsP60TH0AM-/0/1753089029894?e=2147483647&v=beta&t=X5NchLaAfgmAkq0KY705Rje3Gmc3yPSfwJunmobeRGw" alt="AI Evangelist Program" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#6A26F1 55%,#02CCB3)">🤖</div>
+    <div class="insta-date">Jul 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Thought Leadership</div>
+      <div class="insta-title">AI Evangelist Program</div>
+      <div class="insta-desc">KMS launches its AI Evangelist initiative — empowering engineers with deep AI knowledge to drive real-world adoption</div>
+    </div>
+  </a>
+
+  <!-- 14: AI Innovation Hackathon -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_kmstechnology-aiinnovation-hackathon-activity-7362363901608411136-42hB" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQGOZf4w4vhkLA/feedshare-shrink_800/B56Zixe5VtHkAk-/0/1755324338289?e=2147483647&v=beta&t=FYS1c_yKAw6rz9x_YaHGvKMmgR_6MFZxkwDpb062YCY" alt="AI Innovation Hackathon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#FE006A 50%,#6A26F1)">⚡</div>
+    <div class="insta-date">Aug 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Events · Innovation</div>
+      <div class="insta-title">AI Innovation Hackathon</div>
+      <div class="insta-desc">KMSers build real-world AI solutions in our internal hackathon — pushing creative and technical boundaries</div>
+    </div>
+  </a>
+
+  <!-- 15: Back to School Tech Scholarship -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_kmstechnology-back2school-techscholarship-activity-7399446894088896512-nd2p" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQE5eCx9B2-MXw/feedshare-shrink_800/B56Zq_3_.rKwAg-/0/1764155721662?e=2147483647&v=beta&t=8vSUovXSfiIsppD3JUu5JQ50xacvFGufJVvFOGDi1tE" alt="Back to School Tech Scholarship" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#006AFE 55%,#02CCB3)">🎒</div>
+    <div class="insta-date">Sep 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">CSR · Education</div>
+      <div class="insta-title">Back to School — Tech Scholarship</div>
+      <div class="insta-desc">KMS invests in the next generation with the Back to School Tech Scholarship, supporting IT education across Vietnam</div>
+    </div>
+  </a>
+
+  <!-- 16: STEM & AI on VTV -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_stem-ai-vtv-activity-7411770376499851264-zpZI" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQFKTu8WsKMRMQ/feedshare-shrink_800/B56Ztvl3gMJgAg-/0/1767103757597?e=2147483647&v=beta&t=hoCWUQsz7weRBtxtA5kTQ-cUMpTj5XVz8DI7ABFZP5E" alt="STEM &amp; AI on VTV" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#02CCB3 50%,#006AFE)">📺</div>
+    <div class="insta-date">Oct 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Media · Thought Leadership</div>
+      <div class="insta-title">STEM &amp; AI Featured on VTV</div>
+      <div class="insta-desc">KMS featured on national television VTV — sharing our perspective on STEM education and AI's role in Vietnam's tech future</div>
+    </div>
+  </a>
+
+  <!-- 17: Company Trip 2025 "Slay all day" -->
+  <a class="insta-card" href="https://www.facebook.com/reel/1359636732388722" target="_blank" rel="noopener">
+    <img src="company%20trip.jpg" alt="Company Trip 2025" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#1A0820,#FE006A 45%,#E86826)">✈️</div>
+    <div class="insta-date">Nov 2025</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Employee Events</div>
+      <div class="insta-title">Company Trip 2025 — Slay All Day</div>
+      <div class="insta-desc">slay the day – slay every day, every way, KMSers!</div>
+    </div>
+  </a>
+
+  <!-- 18: KMS TechCafe: Future of AI -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_kmstechcafe-kmsglobal-futureofai-activity-7465024022251114496-_K9n" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQGQTCedohqGSw/feedshare-image-high-res/B56Z5kSVB1KcAc-/0/1779798987599?e=1784764800&v=beta&t=BQ8co_fu-XeG1rT12i4NAO-EDXQrP8R66UevAlNPOSk" alt="Tech Cafe 1st Spark in Mexico" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#E86826 50%,#FE006A)">☕</div>
+    <div class="insta-date">Jan 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Events · Global</div>
+      <div class="insta-title">Tech Cafe 1st Spark in Mexico</div>
+      <div class="insta-desc">An open forum on the future of AI bringing together KMS engineers, leaders, and global partners for candid conversation</div>
+    </div>
+  </a>
+
+  <!-- 19: World Ocean Day — Tech for Good -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_worldoceanday-techforgood-esg-activity-7469735045935767553-7prx" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQFoyKyODO_3QA/feedshare-image-high-res/B56Z6mJ9D8KQAY-/0/1780904088991?e=1784764800&v=beta&t=6INYqUNw_mjEKQMZBfb_XZM9d9WNM0EAZHkAtLfnPgs" alt="World Ocean Day" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A3020,#02CCB3 55%,#006AFE)">🌊</div>
+    <div class="insta-date">Jun 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">CSR · ESG</div>
+      <div class="insta-title">World Ocean Day — Tech for Good</div>
+      <div class="insta-desc">KMS marks World Ocean Day by championing tech-for-good initiatives aligned to our ESG commitments</div>
+    </div>
+  </a>
+
+  <!-- 20: Office Visits for Global Guests -->
+  <a class="insta-card" href="https://www.linkedin.com/posts/kms-technology_kmstechnology-lifeatkms-officetour-activity-7472271780695408640-czgR" target="_blank" rel="noopener">
+    <img src="https://media.licdn.com/dms/image/v2/D5622AQHbFNnYzOzRFA/feedshare-image-high-res/B56Z7LUOOwG0AU-/0/1781527537092?e=1784764800&v=beta&t=SPfnxfHfmD62A6TmN5DmwxmYFDw-c4JW6Z3ZgdubiN4" alt="Office Visits for Global Guests" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="insta-card-img-fallback" style="display:none;background:linear-gradient(135deg,#0A1628,#245DB3 50%,#6A26F1)">🏢</div>
+    <div class="insta-date">Jun 2026</div>
+    <div class="insta-link-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6m0 0v6m0-6L10 14"/></svg>
+    </div>
+    <div class="insta-overlay">
+      <div class="insta-tag">Employer Branding</div>
+      <div class="insta-title">Office Visits for Global Guests</div>
+      <div class="insta-desc">A behind-the-scenes look at KMS's workspace culture, team energy, and what a day in the life at KMS really looks like</div>
+    </div>
+  </a>
+
+</div>
+<div class="wrap" style="padding-top:16px;padding-bottom:64px">
+</div>
+</div>
+
+<!-- KMS BRAND IN THE MEDIA -->
+<div id="media" class="full-white">
+<div class="wrap">
+  <div class="sec-label">External Recognition</div>
+  <h2 class="sec-title">Key PR Coverage</h2>
+  <p class="sec-sub">Key topics and brand features on press coverage throughout FY26.</p>
+  <div class="media-grid">
+
+    <a class="media-card" href="https://natlawreview.com/press-releases/beyond-acquisition-how-kms-technology-and-addepto-are-bridging-ai-production" target="_blank" rel="noopener">
+      <div class="media-source">National Law Review</div>
+      <div class="media-headline">Beyond the Acquisition: How KMS Technology and Addepto Are Bridging the AI Production Gap</div>
+      <div class="media-date">February 2026</div>
+      <span class="media-tag" style="background:rgba(0,106,254,.1);color:var(--blue)">Feature · AI Narrative</span>
+      <div class="media-arrow">→</div>
+    </a>
+
+    <a class="media-card" href="https://medium.com/@phongbui_88064/ai-has-crossed-the-line-what-comes-next-will-define-the-next-24-months-9c3af0d0df5e" target="_blank" rel="noopener">
+      <div class="media-source">Medium</div>
+      <div class="media-headline">AI Has Crossed the Line: What Comes Next Will Define the Next 24 Months</div>
+      <div class="media-date">FY26</div>
+      <span class="media-tag" style="background:rgba(106,38,241,.1);color:var(--purple)">Thought Leadership</span>
+      <div class="media-arrow">→</div>
+    </a>
+
+    <a class="media-card" href="https://english.thesaigontimes.vn/kms-technology-unified-brand-to-accelerate-innovation-and-deliver-greater-value-for-clients/" target="_blank" rel="noopener">
+      <div class="media-source">The Saigon Times</div>
+      <div class="media-headline">KMS Technology Unified Brand to Accelerate Innovation and Deliver Greater Value for Clients</div>
+      <div class="media-date">October 2025</div>
+      <span class="media-tag" style="background:rgba(0,106,254,.1);color:var(--blue)">Brand · Strategy</span>
+      <div class="media-arrow">→</div>
+    </a>
+
+    <a class="media-card" href="https://e.vnexpress.net/news/business/kms-s-new-cfo-turns-financial-strategy-into-sustainable-growth-for-clients-4944057.html" target="_blank" rel="noopener">
+      <div class="media-source">VnExpress</div>
+      <div class="media-headline">KMS's New CFO Turns Financial Strategy into Sustainable Growth for Clients</div>
+      <div class="media-date">FY26</div>
+      <span class="media-tag" style="background:rgba(2,204,179,.1);color:#0A9688">Leadership · Finance</span>
+      <div class="media-arrow">→</div>
+    </a>
+
+    <a class="media-card" href="https://e.nhipcaudautu.vn/news/kms-cto-leveraging-ai-technologies-to-truly-solve-complex-business-problems-3363296/" target="_blank" rel="noopener">
+      <div class="media-source">Nhịp Cầu Đầu Tư</div>
+      <div class="media-headline">KMS CTO: Leveraging AI Technologies to Truly Solve Complex Business Problems</div>
+      <div class="media-date">FY26</div>
+      <span class="media-tag" style="background:rgba(0,106,254,.1);color:var(--blue)">Thought Leadership · AI</span>
+      <div class="media-arrow">→</div>
+    </a>
+
+    <a class="media-card" href="https://www.businesswire.com/news/home/20260511595211/en/KMS-Technology-Appoints-Jason-Wojahn-as-CEO-to-Lead-the-Shift-to-AI-Native-Enterprise-Execution" target="_blank" rel="noopener">
+      <div class="media-source">Business Wire</div>
+      <div class="media-headline">KMS Technology Appoints Jason Wojahn as CEO to Lead the Shift to AI-Native Enterprise Execution</div>
+      <div class="media-date">May 2026</div>
+      <span class="media-tag" style="background:rgba(232,104,38,.1);color:var(--orange)">Executive Comms · Press Release</span>
+      <div class="media-arrow">→</div>
+    </a>
+
+  </div>
+</div>
+</div>
+
+<!-- ESG REPORT VIEWER -->
+<div id="esg-report" class="full-dark" style="border-top:1px solid rgba(255,255,255,.07)">
+<div class="wrap" style="padding-top:60px;padding-bottom:72px">
+  <div class="sec-label-teal">FY26 · Sustainability</div>
+  <h2 class="sec-title-white">ESG Report 2026</h2>
+  <p class="sec-sub-white">KMS Technology's annual commitment to environmental, social, and governance excellence — 29 pages.</p>
+
+  <div id="esg-viewer" style="position:relative;max-width:860px;margin:36px auto 0;user-select:none">
+
+    <!-- Page canvas -->
+    <div style="position:relative;background:#1a1a2e;border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5)">
+      <canvas id="esg-canvas" style="display:block;width:100%;height:auto"></canvas>
+      <div id="esg-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,22,40,.9)">
+        <div style="text-align:center">
+          <div style="width:40px;height:40px;border:3px solid rgba(255,255,255,.15);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,.5)">Loading ESG Report…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation bar -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px;gap:12px">
+      <button id="esg-prev" onclick="esgChangePage(-1)"
+        style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 20px;color:#fff;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s"
+        onmouseover="this.style.background='rgba(0,106,254,.25)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+        ← Prev
+      </button>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <span id="esg-page-info" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7);font-family:Poppins,sans-serif">Page 1 of 29</span>
+        <div id="esg-dots" style="display:flex;gap:5px;align-items:center"></div>
+      </div>
+
+      <button id="esg-next" onclick="esgChangePage(1)"
+        style="display:flex;align-items:center;gap:7px;background:rgba(0,106,254,.2);border:1px solid rgba(0,106,254,.35);border-radius:10px;padding:10px 20px;color:#fff;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s"
+        onmouseover="this.style.background='rgba(0,106,254,.4)'" onmouseout="this.style.background='rgba(0,106,254,.2)'">
+        Next →
+      </button>
+    </div>
+
+    <!-- Download CTA -->
+    <div style="text-align:center;margin-top:24px">
+      <a href="ESG%20Report.pdf" download
+        style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:10px;padding:10px 24px;color:#fff;font-family:Poppins,sans-serif;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:.5px;text-transform:uppercase">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m4-5l5 5 5-5m-5 5V3"/></svg>
+        Download Full PDF
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+<script>
+(function(){
+  const PDFJS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  const WORKER_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const PDF_URL = 'ESG%20Report.pdf';
+  const TOTAL = 29;
+
+  let pdfDoc = null;
+  let currentPage = 1;
+  let rendering = false;
+
+  // Build dot indicators (show first 10 as dots, rest implied)
+  const dotsEl = document.getElementById('esg-dots');
+  for(let i = 1; i <= TOTAL; i++){
+    const d = document.createElement('div');
+    d.id = 'dot-' + i;
+    d.style.cssText = `width:${i===1?'20px':'6px'};height:6px;border-radius:4px;background:${i===1?'var(--teal)':'rgba(255,255,255,.2)'};transition:all .25s`;
+    dotsEl.appendChild(d);
+  }
+
+  function updateDots(p){
+    for(let i = 1; i <= TOTAL; i++){
+      const d = document.getElementById('dot-' + i);
+      if(!d) continue;
+      d.style.width = i === p ? '20px' : '6px';
+      d.style.background = i === p ? 'var(--teal)' : 'rgba(255,255,255,.2)';
+    }
+    document.getElementById('esg-page-info').textContent = `Page ${p} of ${TOTAL}`;
+  }
+
+  function renderPage(num){
+    if(!pdfDoc || rendering) return;
+    rendering = true;
+    pdfDoc.getPage(num).then(function(page){
+      const canvas = document.getElementById('esg-canvas');
+      const ctx = canvas.getContext('2d');
+      const containerW = canvas.parentElement.clientWidth;
+      const vp0 = page.getViewport({scale:1});
+      const scale = containerW / vp0.width;
+      const vp = page.getViewport({scale});
+      canvas.width = vp.width;
+      canvas.height = vp.height;
+      page.render({canvasContext:ctx, viewport:vp}).promise.then(function(){
+        document.getElementById('esg-loading').style.display = 'none';
+        rendering = false;
+        updateDots(num);
+      });
+    });
+  }
+
+  window.esgChangePage = function(dir){
+    const next = currentPage + dir;
+    if(next < 1 || next > TOTAL) return;
+    currentPage = next;
+    renderPage(currentPage);
+  };
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight') window.esgChangePage(1);
+    if(e.key === 'ArrowLeft') window.esgChangePage(-1);
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  const viewer = document.getElementById('esg-viewer');
+  viewer.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+  viewer.addEventListener('touchend', function(e){
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 40) window.esgChangePage(dx < 0 ? 1 : -1);
+  }, {passive:true});
+
+  // Load PDF.js and init
+  const s = document.createElement('script');
+  s.src = PDFJS_CDN;
+  s.onload = function(){
+    pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER_SRC;
+    pdfjsLib.getDocument(PDF_URL).promise.then(function(pdf){
+      pdfDoc = pdf;
+      renderPage(1);
+    }).catch(function(){
+      document.getElementById('esg-loading').innerHTML = '<div style="color:rgba(255,255,255,.4);font-size:12px;font-family:Poppins,sans-serif;text-align:center;padding:40px">PDF preview unavailable.<br>Use the download button below.</div>';
+    });
+  };
+  document.head.appendChild(s);
+})();
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">KMS <span>Technology</span> — Corp Comms</div>
+  <div style="margin-bottom:6px">FY26 Year in Review · Jul 2025 – Jun 2026</div>
+  <div>Love our brand initiatives? Follow us on <a href="https://www.linkedin.com/company/kms-technology" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;font-weight:600">LinkedIn</a> and be our fan on <a href="https://www.facebook.com/kmstechnologyvietnam" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;font-weight:600">Facebook</a>.</div>
+</footer>
+
+</body>
+</html>
